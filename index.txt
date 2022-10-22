@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+    </head>
+    <body>
+        <header>
+            <h1 id="header_title">Tide</h1>
+            <h2 id="header_sub_title">On Phuket, from leo</h2>
+        </header>
+        <!-- <div id="contains">
+            <div class="container" style="grid-template: a;">
+                <p>text</p>
+            </div>
+            <div class="container" style="grid-template: b;">
+                <p>text</p>
+            </div>
+            <div class="container" style="grid-template: c;">
+                <p>text</p>
+            </div>
+            <div class="container" style="grid-template: d;">
+                <p>text</p>
+            </div>
+            <div class="container" style="grid-template: e;">
+                <p>text</p>
+            </div>
+        </div> -->
+        <main>
+            <grid-container>
+                <grid_item>A</grid_item>
+                <grid_item>B</grid_item>
+                <grid_item>C</grid_item>
+                <grid_item>D</grid_item>
+                <grid_item>E</grid_item>
+            </grid-container>
+        </main>
+    </body>
+    <style>
+        body {
+            text-align: center;
+            font-family: SF Pro Text, SF Pro Icons, Helvetica Neue, Helvetica, Arial, sans-serif;
+            margin: 0;
+            min-height: 100vh;
+        }
+        header {
+            height: 20%vh;
+        }
+        header #header_title {
+            margin: 0px;
+            font-size: 3.5rem;
+        }
+        header #header_sub_title {
+            margin: 0px;
+            font-size: 2rem;
+        }
+        /* #contains {
+            width: 100%;
+            position: absolute;
+            background-color: aqua;
+            margin: 5px 0 0 0;
+
+            display: grid;
+            grid-gap: 10px;
+            grid-template-columns: 1fr 1fr 1fr;
+            grid-template-rows:  1fr 1fr 1fr;
+            grid-template-areas: "a a b"
+                                 "c d e";
+        }
+        .container {
+            width: 1fr;
+            height: 1fr;
+            min-height: 100px;
+            background-color: blue;
+            margin: 5px;
+        }
+        .container p {
+            margin: 0;
+        } */
+        main {
+            height: 80vh;
+        }
+        grid-container {
+            margin: 10px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(2, 30vw);
+            grid-gap: 10px;
+        }
+        grid_item:first-child {
+            grid-column: 1/3;
+            grid-row: 1/2;
+        }
+        grid_item {
+            background-color: aqua;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.5em;
+        }
+    </style>
+</html>

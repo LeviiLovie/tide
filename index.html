@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tides</title>
+    <style>
+        body {
+            font-family: SF Pro Text, SF Pro Icons, Helvetica Neue, Helvetica, Arial, sans-serif;
+            margin: 0;
+            min-height: 100vh;
+        }
+        body header {
+            text-align: center;
+        }
+    
+        main {
+            margin: 1vh 1vw;
+        }
+        section {
+            margin: 1vw 0;
+            padding: 5px 2.5px;
+            background-color: lightgray;
+            border-radius: 15px;
+        }
+        section h5 {
+            margin: 0.75rem 1vw;
+        }
+    
+        header #header_title {
+            margin: 0px;
+            font-size: 3.5rem;
+        }
+        header #header_sub_title {
+            margin: 0px;
+            font-size: 2rem;
+        }
+    </style>
+    <script src="https://tide.lovie.dev/data.js?no-cache"></script>
+    <script>
+        var today = new Date();
+        var todayDate = today.toISOString().substring(0, 10);
+
+        // old
+        /*
+        var minValue = 9999;
+        var minDate = "";
+
+        var maxValue = 0;
+        var maxDate = "";
+        */
+
+        for (const [date, value] of Object.entries(tides_data)) {
+            if (date.substring(0, 10) === todayDate) {
+                // here, we work with today data
+                
+                
+                
+                // old
+                /*
+                if (minValue > value) {
+                    minValue = value;
+                    minDate = date;
+                }
+                if (maxValue < value) {
+                    maxValue = value;
+                    maxDate = date;
+                }
+                */
+            }
+        }
+        console.log(minDate, minValue);
+        console.log(maxDate, maxValue);
+    </script>
+</head>
+<body>
+    <header>
+        <h1 id="header_title">Tide</h1>
+        <h2 id="header_sub_title">On Phuket, from leo</h2>
+    </header>
+    <main>
+        <section id="tides-yesterday">
+            <div id="tides-now">
+                <h5>0.5</h5> <!--  Information must geting from server!  -->
+            </div>
+            <div id="tides-min-max">
+                <h5>05:34 - -2.3</h5> <!--  Information must geting from server!  -->
+                <h5>10:43 - +3.6</h5> <!--  Information must geting from server!  -->
+                <h5>19:05 - -1.4</h5> <!--  Information must geting from server!  -->
+                <h5>23:52 - +3.7</h5> <!--  Information must geting from server!  -->
+            </div>
+        </section>
+        <section id="tides-today">
+            <div id="tides-now">
+                <h5>0.5</h5> <!--  Information must geting from server!  -->
+            </div>
+            <div id="tides-min-max">
+                <h5>05:34 - -2.3</h5> <!--  Information must geting from server!  -->
+                <h5>10:43 - +3.6</h5> <!--  Information must geting from server!  -->
+                <h5>19:05 - -1.4</h5> <!--  Information must geting from server!  -->
+                <h5>23:52 - +3.7</h5> <!--  Information must geting from server!  -->
+            </div>
+        </section>
+        <section id="tides-tomorow">
+            <div id="tides-now">
+                <h4>Tide level now is:</h4>
+                <h5>0.5</h5> <!--  Information must geting from server!  -->
+            </div>
+            <div id="tides-min-max">
+                <h5>05:34 - -2.3</h5> <!--  Information must geting from server!  -->
+                <h5>10:43 - +3.6</h5> <!--  Information must geting from server!  -->
+                <h5>19:05 - -1.4</h5> <!--  Information must geting from server!  -->
+                <h5>23:52 - +3.7</h5> <!--  Information must geting from server!  -->
+            </div>
+        </section>
+        <section id="tides-day-after-tomorow">
+            <div id="tides-now">
+                <h5>0.5</h5> <!--  Information must geting from server!  -->
+            </div>
+            <div id="tides-min-max">
+                <h5>05:34 - -2.3</h5> <!--  Information must geting from server!  -->
+                <h5>10:43 - +3.6</h5> <!--  Information must geting from server!  -->
+                <h5>19:05 - -1.4</h5> <!--  Information must geting from server!  -->
+                <h5>23:52 - +3.7</h5> <!--  Information must geting from server!  -->
+            </div>
+        </section>
+        <section id="tides-table">
+            <!-- Somebody, pls, can u do a table? -->
+        </section>
+    </main>
+</body>
+</html>
