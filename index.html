@@ -27,6 +27,17 @@
         section h5 {
             margin: 0.75rem 1vw;
         }
+        section h4 {
+            margin: 0.75rem 1vw;
+        }
+        section h3 {
+            margin: 0.75rem 1vw;
+        }
+
+        #tides-min-max-value-containers {
+            display: flex;
+            margin: 0;
+        }
     
         header #header_title {
             margin: 0px;
@@ -51,11 +62,52 @@
         var maxDate = "";
         */
 
+        var min_one = 1000
+        var min_two = 1000
+        var min_one_off = false
+
+        var max_one = 0
+        var max_two = 0
+        var max_one_off = false
+
+        var tide_level_now = 0
+
         for (const [date, value] of Object.entries(tides_data)) {
             if (date.substring(0, 10) === todayDate) {
                 // here, we work with today data
                 
-                
+                // if (min_one_off == false) {
+                    if (value < min_one) {
+                        min_one = value
+                    } 
+                // }
+                // if (max_one_off == false) {
+                    if (value > max_one) {
+                        max_one = value
+                    }
+                // }
+
+                // if (min_one_off == false) {
+                //     if (value > min_one) {
+                //         min_one_off = true
+                //     } 
+                // }
+                // if (max_one_off == false) {
+                //     if (value < max_one) {
+                //         max_one_off = true
+                //     }
+                // }
+
+                // if (min_one_off == false) {
+                //     if (value < min_two) {
+                //         min_two = value
+                //     } 
+                // }
+                // if (max_one_off == false) {
+                //     if (value > max_two) {
+                //         max_two = value
+                //     }
+                // }
                 
                 // old
                 /*
@@ -69,9 +121,32 @@
                 }
                 */
             }
+            console.log(date.substring(0, 16))
         }
+
+        // old too
+        /* 
         console.log(minDate, minValue);
         console.log(maxDate, maxValue);
+        */
+        
+        function get_min_one() {
+            return min_one;
+        }
+        function get_min_two() {
+            return min_two;
+        }
+        function get_max_one() {
+            return max_one;
+        }
+        function get_max_two() {
+            return max_two;
+        }
+
+        console.log("Min one is: " + get_min_one())
+        // console.log("Min two is: " + get_min_two())
+        console.log("Max one is: " + get_max_one())
+        // console.log("Max two is: " + get_max_two())
     </script>
 </head>
 <body>
@@ -81,43 +156,75 @@
     </header>
     <main>
         <section id="tides-now">
-            <h4>Tide level now is:</h4>
+            <h3>Tide level now is:</h3>
             <h5>0.5</h5> <!--  Information must geting from server!  -->
         </section>
-        <section id="tides-min-max-value">
-            <div id="tide-min-max-1-day-befor-today" class="tides-min-max-container">
-                <h5>05:34 - -2.3</h5>
-                <h5>10:43 - +3.6</h5>
-                <h5>19:05 - -1.4</h5>
-                <h5>23:52 - +3.7</h5>
+        <!-- <section id="tides-min-max-value">
+            <h3>Tide min-max values on day is:</h3>
+            <div id="tides-min-max-value-containers">
+                <div id="tide-min-max-1-day-befor-today" class="tides-min-max-container">
+                    <h4>Yesterday is:</h4>
+                    <h5>05:34 - -2.3</h5>
+                    <h5>10:43 - +3.6</h5>
+                    <h5>19:05 - -1.4</h5>
+                    <h5>23:52 - +3.7</h5>
+                </div>
+                <div id="tide-min-max-today" class="tides-min-max-container">
+                    <h4>Today is:</h4>
+                    <h5>05:34 - -2.3</h5>
+                    <h5>10:43 - +3.6</h5>
+                    <h5>19:05 - -1.4</h5>
+                    <h5>23:52 - +3.7</h5>
+                </div>
+                <div id="tide-min-max-1-day-after-today" class="tides-min-max-container">
+                    <h4>Tomorow is:</h4>
+                    <h5>05:34 - -2.3</h5>
+                    <h5>10:43 - +3.6</h5>
+                    <h5>19:05 - -1.4</h5>
+                    <h5>23:52 - +3.7</h5>
+                </div>
             </div>
-            <div id="tide-min-max-today" class="tides-min-max-container">
-                <h5>05:34 - -2.3</h5>
-                <h5>10:43 - +3.6</h5>
-                <h5>19:05 - -1.4</h5>
-                <h5>23:52 - +3.7</h5>
-            </div>
-            <div id="tide-min-max-1-day-after-today" class="tides-min-max-container">
-                <h5>05:34 - -2.3</h5>
-                <h5>10:43 - +3.6</h5>
-                <h5>19:05 - -1.4</h5>
-                <h5>23:52 - +3.7</h5>
-            </div>
-            <div id="tide-min-max-2-day-after-today" class="tides-min-max-container">
-                <h5>05:34 - -2.3</h5>
-                <h5>10:43 - +3.6</h5>
-                <h5>19:05 - -1.4</h5>
-                <h5>23:52 - +3.7</h5>
-            </div>
-            <div id="tide-min-max-3-day-after-today" class="tides-min-max-container">
-                <h5>05:34 - -2.3</h5>
-                <h5>10:43 - +3.6</h5>
-                <h5>19:05 - -1.4</h5>
-                <h5>23:52 - +3.7</h5>
-            </div>
-        </section>
+        </section> -->
         <section id="tides-table">
             <!-- Somebody, pls, can u do a table? -->
+            <table>
+                <caption>
+                    <th>hours</th>
+                    <th>00</th><th>01</th><th>02</th><th>03</th><th>04</th><th>05</th><th>06</th><th>07</th><th>08</th><th>09</th><th>10</th><th>11</th><th>12</th><th>13</th><th>14</th><th>15</th><th>16</th><th>17</th><th>18</th><th>19</th><th>20</th><th>21</th><th>22</th><th>23</th>
+                </caption>
+                
+                <tr><th>01</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th></tr>
+                <tr><th>02</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th></tr>
+                <tr><th>03</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th></tr>
+                <tr><th>04</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th></tr>
+                <tr><th>05</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th></tr>
+                <tr><th>06</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th></tr>
+                <tr><th>07</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th></tr>
+                <tr><th>08</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th></tr>
+                <tr><th>09</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th></tr>
+                <tr><th>10</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th></tr>
+                <tr><th>11</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th></tr>
+                <tr><th>12</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th></tr>
+                <tr><th>13</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th></tr>
+                <tr><th>14</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th></tr>
+                <tr><th>15</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th></tr>
+                <tr><th>16</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th></tr>
+                <tr><th>17</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th></tr>
+                <tr><th>18</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th></tr>
+                <tr><th>19</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th></tr>
+                <tr><th>20</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th></tr>
+                <tr><th>21</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th></tr>
+                <tr><th>22</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th></tr>
+                <tr><th>23</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th></tr>
+                <tr><th>24</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th></tr>
+                <tr><th>25</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th></tr>
+                <tr><th>26</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th></tr>
+                <tr><th>27</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th></tr>
+                <tr><th>28</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th></tr>
+                <tr><th>29</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th></tr>
+                <tr><th>30</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th></tr>
+                <tr><th>31</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th></tr>
+            </table>
         </section>
     </main>
 </body>
