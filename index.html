@@ -52,6 +52,10 @@
     <script>
         var today = new Date();
         var todayDate = today.toISOString().substring(0, 10);
+        var nowHour = today.getHours();
+        var nowDate = `${todayDate}T${nowHour}:00:00`;
+        // console.log("nowDate", nowDate) 
+        // console.log("nowTide", tides_data[nowDate]);
 
         // old
         /*
@@ -70,7 +74,7 @@
         var max_two = 0
         var max_one_off = false
 
-        var tide_level_now = 0
+        var tide_level_now = tides_data[nowDate]
 
         for (const [date, value] of Object.entries(tides_data)) {
             if (date.substring(0, 10) === todayDate) {
@@ -108,28 +112,19 @@
                 //         max_two = value
                 //     }
                 // }
-                
-                // old
-                /*
-                if (minValue > value) {
-                    minValue = value;
-                    minDate = date;
-                }
-                if (maxValue < value) {
-                    maxValue = value;
-                    maxDate = date;
-                }
-                */
             }
-            console.log(date.substring(0, 16))
+
+            if (date.substring(0, 13) == todayDate + "T" + nowHour) {
+                console.log(date + " - " + value)
+            }
+            // console.log(date.substring(0, 13), todayDate + "T" + nowHour)
+            
+
+            // console.log(date.substring(0, 16))
         }
 
-        // old too
-        /* 
-        console.log(minDate, minValue);
-        console.log(maxDate, maxValue);
-        */
-        
+        document.getElementById("now_tide_level_lable").text("test text");
+
         function get_min_one() {
             return min_one;
         }
@@ -142,14 +137,23 @@
         function get_max_two() {
             return max_two;
         }
+        function get_now_tide_level() {
+            return tide_level_now;
+        }
+
+
+        // tile_level_now_lable.textContent = tide_level_now.toISOString
 
         console.log("Min one is: " + get_min_one())
         // console.log("Min two is: " + get_min_two())
         console.log("Max one is: " + get_max_one())
         // console.log("Max two is: " + get_max_two())
+
+        // document.getElementById("p1").innerHTML = "New text!";
     </script>
 </head>
 <body>
+    <!-- <p id="p1">Hello World!</p> -->
     <header>
         <h1 id="header_title">Tide</h1>
         <h2 id="header_sub_title">On Phuket, from leo</h2>
@@ -157,7 +161,7 @@
     <main>
         <section id="tides-now">
             <h3>Tide level now is:</h3>
-            <h5>0.5</h5> <!--  Information must geting from server!  -->
+            <h5 id="now_tide_level_lable">Value wasn't loaded</h5> <!--  Information must geting from server!  -->
         </section>
         <!-- <section id="tides-min-max-value">
             <h3>Tide min-max values on day is:</h3>
@@ -189,8 +193,7 @@
             <!-- Somebody, pls, can u do a table? -->
             <table>
                 <caption>
-                    <th>hours</th>
-                    <th>00</th><th>01</th><th>02</th><th>03</th><th>04</th><th>05</th><th>06</th><th>07</th><th>08</th><th>09</th><th>10</th><th>11</th><th>12</th><th>13</th><th>14</th><th>15</th><th>16</th><th>17</th><th>18</th><th>19</th><th>20</th><th>21</th><th>22</th><th>23</th>
+                    <th></th><th>00</th><th>01</th><th>02</th><th>03</th><th>04</th><th>05</th><th>06</th><th>07</th><th>08</th><th>09</th><th>10</th><th>11</th><th>12</th><th>13</th><th>14</th><th>15</th><th>16</th><th>17</th><th>18</th><th>19</th><th>20</th><th>21</th><th>22</th><th>23</th>
                 </caption>
                 
                 <tr><th>01</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th><th>0</th></tr>
